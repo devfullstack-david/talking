@@ -19,7 +19,6 @@ As imagens são armazenadas no **Cloudinary** e os dados persistidos no **MongoD
 ## ⚙️ Funcionalidades
 
 - 💬 Chat em tempo real  
-- 👤 Autenticação de usuários  
 - 📸 Envio de imagens (armazenadas no Cloudinary)  
 - 📡 Comunicação via WebSocket (Socket.IO)  
 - 🗄️ Armazenamento persistente de mensagens no MongoDB  
@@ -38,16 +37,18 @@ cd talking
 ### Backend
 
 ```bash
-cd server
+cd backend
 npm install
+-configure the env file
 npm run dev
 ```
 
 ### Frontend
 
 ```bash
-cd client
-npm install
+cd frontend
+npm i
+-configure the env file
 npm run dev
 ```
 
@@ -58,19 +59,13 @@ npm run dev
 Crie um arquivo `.env` na raiz do **backend** com as seguintes variáveis:
 
 ```bash
-PORT=4000
-MONGO_URI=sua_string_de_conexao_mongodb
-CLOUDINARY_CLOUD_NAME=seu_cloud_name
-CLOUDINARY_API_KEY=sua_api_key
-CLOUDINARY_API_SECRET=sua_api_secret
-```
-
----
-
-## 📸 Preview
-
-_(adicione um print da aplicação aqui)_  
-
+MONGODB_URI=**********
+PORT=**********
+JWT_SECRET=**********
+NODE_ENV=**********
+CLOUDINARY_CLOUD_NAME=**********
+CLOUDINARY_API_KEY=**********
+CLOUDINARY_API_SECRET=**********
 ---
 
 ## 📜 Licença
