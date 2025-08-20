@@ -1,3 +1,5 @@
+import type { LoginFormData } from "../pages/LoginPage";
+import type { UpdateFormData } from "../pages/ProfilePage";
 import type { FormData } from "../pages/SignUpPage";
 
 export type AuthUser = {
@@ -14,4 +16,7 @@ export type UseAuthStore = {
   signup: (data: FormData) => void;
   isSigningUp: boolean;
   logout: () => void;
+  login: (data: LoginFormData) => void;
+  isLoggingIn: boolean;
+  updateProfile: (data: UpdateFormData) => void;
 }

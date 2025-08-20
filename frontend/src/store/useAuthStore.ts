@@ -2,6 +2,7 @@ import {create, type StoreApi, type UseBoundStore} from 'zustand';
 import { axiosInstance } from '../lib/axios';
 import type { FormData } from '../types/pages/SignUpPage';
 import toast from 'react-hot-toast';
+import type { LoginFormData } from '../types/pages/LoginPage';
 
 export const useAuthStore: UseBoundStore<StoreApi<unknown>> = create((set) => ({
   authUser: null,
@@ -48,5 +49,23 @@ export const useAuthStore: UseBoundStore<StoreApi<unknown>> = create((set) => ({
       toast.error("Error in logout");
       console.error(error);
     }
+  },
+
+  login: async (data: LoginFormData) => {
+    set({ isLoggingIng: true });
+    try {
+      const res = await axiosInstance.post("/auth/login", data);
+      set({ authUser: res.data })
+      toast.success("Logged in successfully");
+    } catch (error) {
+      toast.error("Error in login");
+      console.error("Error in login", error);
+    } finally {
+      set({ isLoggingIng: true });
+    }
+  },
+
+  updateProfile: async() => {
+    
   },
 }));
