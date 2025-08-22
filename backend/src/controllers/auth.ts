@@ -67,6 +67,8 @@ export const login = async (req: Request, res: Response) => {
       fullName: user.fullName,
       email: user.email,
       profilePic: user.profilePic,
+      password,
+      createdAt: user.createdAt,
     })
   } catch (error) {
     console.error("Error in log controller");

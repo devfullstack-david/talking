@@ -7,6 +7,8 @@ export type AuthUser = {
   fullName: string;
   email: string;
   profilePic?: string;
+  password: string;
+  createdAt: string;
 }
 
 export type UseAuthStore = {
@@ -19,4 +21,5 @@ export type UseAuthStore = {
   login: (data: LoginFormData) => void;
   isLoggingIn: boolean;
   updateProfile: (data: UpdateFormData) => void;
+  isUpdatingProfile: boolean;
 }

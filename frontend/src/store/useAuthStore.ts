@@ -3,6 +3,7 @@ import { axiosInstance } from '../lib/axios';
 import type { FormData } from '../types/pages/SignUpPage';
 import toast from 'react-hot-toast';
 import type { LoginFormData } from '../types/pages/LoginPage';
+import type { UpdateFormData } from '../types/pages/ProfilePage';
 
 export const useAuthStore: UseBoundStore<StoreApi<unknown>> = create((set) => ({
   authUser: null,
@@ -65,7 +66,17 @@ export const useAuthStore: UseBoundStore<StoreApi<unknown>> = create((set) => ({
     }
   },
 
-  updateProfile: async() => {
-    
+  updateProfile: async(data: UpdateFormData) => {
+    set({ isUpdatingProfile: true });
+    try {
+      const res = await axiosInstance.put("/auth/update-profile", data);
+      set({ authUser: res.data });
+      toast.success("Profile updated successfully");
+    } catch (error) {
+      console.error(error);
+      toast.error("Occurs an error on update");
+    } finally {
+      set({ isUpdatingProfile: false });
+    }
   },
 }));
